@@ -7,52 +7,41 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BinaryNode.h"
 #import "HeapSort.h"
 
-@interface Node: NSObject
+@interface BinaryNode ()
 
-@property (strong, nonatomic) id value;
-@property (strong, nonatomic) Node *left;
-@property (strong, nonatomic) Node *right;
-
-- (instancetype)init: (id)value left:(Node *)left right:(Node *)right;
-+ (void)heapify:(Node *)node;
-+ (Node *)makeTreeFromArray:(NSArray *)input;
-+ (NSArray *)mergeTree:(Node *)node;
++ (void)heapify:(BinaryNode *)node;
++ (BinaryNode *)makeTreeFromArray:(NSArray *)input;
++ (NSArray *)mergeTree:(BinaryNode *)node;
 
 @end
 
-@implementation Node
+@implementation BinaryNode
 
-- (instancetype)init: (id)value left:(Node *)left right:(Node *)right {
-    _value = value;
-    _left = left;
-    _right = right;
-    return self;
-}
-
-+ (void)heapify:(Node *)node {
++ (void)heapify:(BinaryNode *)node {
     if (node) {
         if (node.left) {
             if (node.left.value > node.value) {
-                Node *temp = node.value;
+                BinaryNode *temp = node.value;
                 node.value = node.left.value;
                 node.left.value = temp;
             }
-            [Node heapify:node.left];
+            [BinaryNode heapify:node.left];
         }
         if (node.right) {
             if (node.right.value > node.value) {
-                Node *temp = node.value;
+                BinaryNode *temp = node.value;
                 node.value = node.right.value;
                 node.right.value = temp;
             }
-            [Node heapify:node.right];
+            [BinaryNode heapify:node.right];
         }
    }
 }
 
-+ (Node *)makeTreeFromArray:(NSArray *)input {
++ (BinaryNode *)makeTreeFromArray:(NSArray *)input {
     if (input.count) {
         NSArray *leftArray = nil;
         NSArray *rightArray = nil;
@@ -63,20 +52,20 @@
             rightArray = [remaining subarrayWithRange:NSMakeRange(leftArray.count, remaining.count - leftArray.count)];
         }
         
-        Node *node = [[Node alloc] init:input[0] left:[Node makeTreeFromArray:leftArray] right:[Node makeTreeFromArray:rightArray]];
+        BinaryNode *node = [[BinaryNode alloc] init:input[0] left:[BinaryNode makeTreeFromArray:leftArray] right:[BinaryNode makeTreeFromArray:rightArray]];
         return node;
     } else {
         return nil;
     }
 }
 
-+ (NSArray *)mergeTree:(Node *)node {
++ (NSArray *)mergeTree:(BinaryNode *)node {
     NSMutableArray *merged = [[NSMutableArray alloc] init];
     
     if (node) {
-        NSArray *leftArray = [Node mergeTree:node.left];
+        NSArray *leftArray = [BinaryNode mergeTree:node.left];
         uint leftIndex = 0;
-        NSArray *rightArray = [Node mergeTree:node.right];
+        NSArray *rightArray = [BinaryNode mergeTree:node.right];
         uint rightIndex = 0;
         
         while (leftIndex < leftArray.count || rightIndex < rightArray.count) {
@@ -105,9 +94,9 @@
 @implementation HeapSort
 
 - (NSArray *)sort: (NSArray *)input usingComparator:(NSComparator)comparator {
-    Node *root = [Node makeTreeFromArray:input];
-    [Node heapify:root];
-    NSArray *sorted = [Node mergeTree:root];
+    BinaryNode *root = [BinaryNode makeTreeFromArray:input];
+    [BinaryNode heapify:root];
+    NSArray *sorted = [BinaryNode mergeTree:root];
     return sorted;
 }
 
