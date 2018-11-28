@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B8AC09A21AF15280033E484 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AC09921AF15280033E484 /* main.c */; };
+		3B8AC0A221AF1B460033E484 /* junko.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AC0A121AF1B460033E484 /* junko.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		3B8AC09621AF15280033E484 /* CPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8AC09921AF15280033E484 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		3B8AC0A021AF1B460033E484 /* junko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = junko.h; sourceTree = "<group>"; };
+		3B8AC0A121AF1B460033E484 /* junko.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = junko.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3B8AC09921AF15280033E484 /* main.c */,
+				3B8AC0A021AF1B460033E484 /* junko.h */,
+				3B8AC0A121AF1B460033E484 /* junko.c */,
 			);
 			path = CPlayground;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8AC09A21AF15280033E484 /* main.c in Sources */,
+				3B8AC0A221AF1B460033E484 /* junko.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

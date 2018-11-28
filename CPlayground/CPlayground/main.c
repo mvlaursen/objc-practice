@@ -7,9 +7,11 @@
 //
 
 #include <stdio.h>
+#include "junko.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
+    junko_func();
     return 0;
 }
