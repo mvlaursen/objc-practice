@@ -24,7 +24,6 @@ void makePattern(char *grid, int dim) {
             }
             currChar += sizeOfChar;
         }
-        printf("\n");
         startRowWithX = !startRowWithX;
     }
 }
