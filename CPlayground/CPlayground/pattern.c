@@ -8,17 +8,18 @@
 
 #include "pattern.h"
 
-void printPattern(int size) {
+void makePattern(char *grid, int dim) {
+    size_t sizeOfChar = sizeof(char);
     int startRowWithX = 0;
-    
-    for (int i = 0; i < size; i++) {
+
+    for (int i = 0; i < dim; i++) {
         int alternateX = startRowWithX;
-        
-        for (int j = 0; j < size; j++) {
+
+        for (int j = 0; j < dim; j++) {
             if ((alternateX = !alternateX)) {
-                printf("x");
+                *(grid + i * dim * sizeOfChar + j * sizeOfChar) = 'X';
             } else {
-                printf(".");
+                *(grid + i * dim * sizeOfChar + j * sizeOfChar) = '.';
             }
         }
         printf("\n");

@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-void printPattern(int size);
+void makePattern(char *grid, int dim);
 
 #endif /* pattern_h */
