@@ -11,16 +11,18 @@
 void makePattern(char *grid, int dim) {
     size_t sizeOfChar = sizeof(char);
     int startRowWithX = 0;
+    char *currChar = grid;
 
     for (int i = 0; i < dim; i++) {
         int alternateX = startRowWithX;
 
         for (int j = 0; j < dim; j++) {
             if ((alternateX = !alternateX)) {
-                *(grid + i * dim * sizeOfChar + j * sizeOfChar) = 'X';
+                *currChar = 'X';
             } else {
-                *(grid + i * dim * sizeOfChar + j * sizeOfChar) = '.';
+                *currChar = '.';
             }
+            currChar += sizeOfChar;
         }
         printf("\n");
         startRowWithX = !startRowWithX;
