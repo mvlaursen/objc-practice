@@ -14,15 +14,15 @@
 template <class T> class ListNode {
 public:
     ListNode()
-    : mnValue(0), mpNext(nullptr) {
+    : mValue(0), mpNext(nullptr) {
     }
     
-    ListNode(int nValue, ListNode<T> *pNext)
-    : mnValue(nValue), mpNext(pNext) {
+    ListNode(int value, ListNode<T> *pNext)
+    : mValue(value), mpNext(pNext) {
     }
 
     ListNode(const ListNode<T>& other)
-    : mnValue(other.mnValue), mpNext(other.mpNext) {
+    : mValue(other.mValue), mpNext(other.mpNext) {
     }
     
     ~ListNode() {
@@ -30,14 +30,14 @@ public:
     
     ListNode<T>& operator=(const ListNode<T>& other) {
         if (this != &other) {
-            mnValue = other.mnValue;
+            mValue = other.mValue;
             mpNext = other.mpNext;
         }
         
         return *this;
     }
     
-    void setNext(const ListNode<T> *pNext) {
+    void setNext(ListNode<T> *pNext) {
         mpNext = pNext;
     }
     
@@ -60,14 +60,19 @@ public:
     }
     
     static void deleteList(ListNode<T> *pHead) {
-        for (const ListNode<T> *pNode = pHead; pNode != nullptr; pNode = pNode->mpNext, delete pNode)
-        {
+        ListNode<T> *pNode = pHead;
+        ListNode<T> *pNextNode = nullptr;
+        
+        while (pNode != nullptr) {
+            pNextNode = pNode->mpNext;
+            delete pNode;
+            pNode = pNextNode;
         }
     }
     
     friend std::ostream& operator<<(std::ostream& os, const ListNode<T> *pHead) {
         for (const ListNode<T> *pNode = pHead; pNode != nullptr; pNode = pNode->mpNext) {
-            os << pNode->mnValue << " -> ";
+            os << pNode->mValue << " -> ";
         }
     
         os << "nullptr" << std::endl;
@@ -76,8 +81,8 @@ public:
 
 
 private:
-    int mnValue;
-    const ListNode<T> *mpNext;
+    T mValue;
+    ListNode<T> *mpNext;
 };
 
 #endif /* ListNode_hpp */

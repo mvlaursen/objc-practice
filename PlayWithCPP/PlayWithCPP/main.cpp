@@ -12,9 +12,15 @@
 const size_t N_ITEMS = 10;
 
 int main(int argc, const char * argv[]) {
-    int array[N_ITEMS] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    ListNode<int> *pHead = ListNode<int>::fromArray(array, N_ITEMS);
-    std::cout << pHead;
-    ListNode<int>::deleteList(pHead);
+    int arrayInt[N_ITEMS] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    ListNode<int> *pHeadInts = ListNode<int>::fromArray(arrayInt, N_ITEMS);
+    std::cout << pHeadInts;
+    ListNode<int>::deleteList(pHeadInts);
+    
+    char arrayChars[N_ITEMS] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+    ListNode<char> *pHeadChar = ListNode<char>::fromArray(arrayChars, N_ITEMS);
+    std::cout << pHeadChar;
+    ListNode<char>::deleteList(pHeadChar);
+
     return 0;
 }
