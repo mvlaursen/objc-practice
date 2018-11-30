@@ -18,7 +18,7 @@ public:
     
     ListNode& operator=(const ListNode&);
     
-    static ListNode *fromArray(int array[], size_t size);
+    static ListNode *fromArray(const int array[], size_t size);
 
 private:
     int mnValue;

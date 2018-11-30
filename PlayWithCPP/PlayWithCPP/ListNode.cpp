@@ -33,10 +33,11 @@ ListNode& ListNode::operator=(const ListNode& other) {
     return *this;
 }
 
-ListNode *ListNode::fromArray(int array[], size_t size) {
+ListNode *ListNode::fromArray(const int array[], size_t size) {
     for (size_t i = 0; i < size; i++) {
-        std::cout << array[i];
+        std::cout << array[i] << ", ";
     }
+    std::cout << std::endl;
     
     return nullptr;
 }
