@@ -23,7 +23,7 @@ public:
     void setNext(const ListNode *pNext);
     
     static ListNode *fromArray(const int array[], size_t size);
-    friend std::ostream& operator<<(std::ostream&, const ListNode&);
+    friend std::ostream& operator<<(std::ostream&, const ListNode *);
 
 private:
     int mnValue;

@@ -56,7 +56,11 @@ ListNode *ListNode::fromArray(const int array[], size_t size) {
     return pHead;
 }
 
-std::ostream& operator<<(std::ostream& os, const ListNode& listNode) {
-    os << listNode.mnValue << " -> ";
+std::ostream& operator<<(std::ostream& os, const ListNode *pHead) {
+    for (const ListNode *pNode = pHead; pNode != nullptr; pNode = pNode->mpNext) {
+        os << pNode->mnValue << " -> ";
+    }
+    
+    os << "nullptr" << std::endl;
     return os;
 }
