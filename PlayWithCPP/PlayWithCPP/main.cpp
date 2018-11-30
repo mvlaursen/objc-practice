@@ -13,7 +13,8 @@ const size_t N_ITEMS = 10;
 
 int main(int argc, const char * argv[]) {
     int array[N_ITEMS] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    ListNode *pHead = ListNode::fromArray(array, N_ITEMS);
+    ListNode<int> *pHead = ListNode<int>::fromArray(array, N_ITEMS);
     std::cout << pHead;
+    ListNode<int>::deleteList(pHead);
     return 0;
 }
