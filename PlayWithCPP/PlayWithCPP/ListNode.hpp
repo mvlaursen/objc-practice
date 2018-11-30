@@ -9,6 +9,8 @@
 #ifndef ListNode_hpp
 #define ListNode_hpp
 
+#include <ostream>
+
 class ListNode {
 public:
     ListNode();
@@ -18,11 +20,14 @@ public:
     
     ListNode& operator=(const ListNode&);
     
+    void setNext(const ListNode *pNext);
+    
     static ListNode *fromArray(const int array[], size_t size);
+    friend std::ostream& operator<<(std::ostream&, const ListNode&);
 
 private:
     int mnValue;
-    ListNode *mpNext;
+    const ListNode *mpNext;
 };
 
 #endif /* ListNode_hpp */

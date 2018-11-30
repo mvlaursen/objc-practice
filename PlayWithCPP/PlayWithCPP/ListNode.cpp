@@ -33,11 +33,30 @@ ListNode& ListNode::operator=(const ListNode& other) {
     return *this;
 }
 
+void ListNode::setNext(const ListNode *pNext) {
+    mpNext = pNext;
+}
+
 ListNode *ListNode::fromArray(const int array[], size_t size) {
-    for (size_t i = 0; i < size; i++) {
-        std::cout << array[i] << ", ";
+    ListNode *pHead = nullptr;
+    ListNode *pTail = nullptr;
+    
+    for (size_t i = 0; i < size; i++) {        
+        if (i == 0) {
+            pHead = new ListNode(array[i], nullptr);
+            pTail = pHead;
+        } else {
+            ListNode *pNext = new ListNode(array[i], nullptr);
+            pTail->setNext(pNext);
+            pTail = pNext;
+        }
     }
     std::cout << std::endl;
     
-    return nullptr;
+    return pHead;
+}
+
+std::ostream& operator<<(std::ostream& os, const ListNode& listNode) {
+    os << listNode.mnValue << " -> ";
+    return os;
 }
