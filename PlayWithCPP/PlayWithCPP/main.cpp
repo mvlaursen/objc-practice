@@ -19,6 +19,11 @@ int main(int argc, const char * argv[]) {
     char arrayChar[N_ITEMS] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
     LinkedList<char> listChar(arrayChar, N_ITEMS);
     std::cout << listChar;
+    
+    std::string arrayStr[N_ITEMS] = {"apple", "bandana", "carrot", "duck", "egg", "food", "grapes",
+        "Hawaiian bread rolls", "ice", "jam"};
+    LinkedList<std::string> listStr(arrayStr, N_ITEMS);
+    std::cout << listStr;
 
     return 0;
 }
