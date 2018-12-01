@@ -17,10 +17,6 @@ public:
     : mpHead(nullptr) {
     }
     
-    LinkedList(const LinkedList<T>& other) {
-        throw;
-    }
-    
     LinkedList(T array[], size_t size) {
         ListNode<T> *pTail = nullptr;
         
@@ -47,10 +43,6 @@ public:
         }
     }
     
-    LinkedList<T>& operator==(const LinkedList<T>& other) {
-        throw;
-    }
-    
     friend std::ostream& operator<<(std::ostream& os, const LinkedList<T>& list) {
         for (const ListNode<T> *pNode = list.mpHead; pNode != nullptr; pNode = pNode->next()) {
             os << pNode->value() << " -> ";
@@ -62,6 +54,9 @@ public:
     
 private:
     ListNode<T> *mpHead;
+    
+    LinkedList(const LinkedList<T>& other);
+    LinkedList<T>& operator==(const LinkedList<T>& other);
 };
 
 #endif /* LinkedList_hpp */

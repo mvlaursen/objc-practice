@@ -13,28 +13,11 @@
 
 template <class T> class ListNode {
 public:    
-    ListNode()
-    : mValue(0), mpNext(nullptr) {
-    }
-    
     ListNode(T value, ListNode<T> *pNext)
     : mValue(value), mpNext(pNext) {
     }
-
-    ListNode(const ListNode<T>& other)
-    : mValue(other.mValue), mpNext(other.mpNext) {
-    }
     
     ~ListNode() {
-    }
-    
-    ListNode<T>& operator=(const ListNode<T>& other) {
-        if (this != &other) {
-            mValue = other.mValue;
-            mpNext = other.mpNext;
-        }
-        
-        return *this;
     }
     
     ListNode<T> *next() const {
@@ -52,6 +35,9 @@ public:
 private:
     T mValue;
     ListNode<T> *mpNext;
+    
+    ListNode(const ListNode<T>& other);
+    ListNode<T>& operator=(const ListNode<T>& other);
 };
 
 #endif /* ListNode_hpp */
