@@ -11,6 +11,9 @@
 
 @interface TableViewController ()
 
+@property (readonly, strong) NSFetchRequest *fetchRequest;
+@property (readonly, weak) NSManagedObjectContext *viewContext;
+
 @end
 
 @implementation TableViewController
@@ -23,6 +26,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    AppDelegate *appDelegate = (AppDelegate *) UIApplication.sharedApplication.delegate;
+    _viewContext = appDelegate.persistentContainer.viewContext;
+    _fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Animal"];
 }
 
 #pragma mark - Table view data source
@@ -32,10 +39,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    AppDelegate *appDelegate = (AppDelegate *) UIApplication.sharedApplication.delegate;
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Animal"];
     NSError *error;
-    NSUInteger count = [appDelegate.persistentContainer.viewContext countForFetchRequest:request error:&error];
+    NSUInteger count = [self.viewContext countForFetchRequest:self.fetchRequest error:&error];
     return count;
 }
 
