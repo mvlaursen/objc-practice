@@ -6,6 +6,7 @@
 //  Copyright © 2018 Appamajigger. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "TableViewController.h"
 
 @interface TableViewController ()
@@ -31,8 +32,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    AppDelegate *appDelegate = (AppDelegate *) UIApplication.sharedApplication.delegate;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Animal"];
+    NSError *error;
+    NSUInteger count = [appDelegate.persistentContainer.viewContext countForFetchRequest:request error:&error];
+    return count;
 }
 
 /*

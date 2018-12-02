@@ -15,8 +15,13 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    // This is kinda dumb. It adds a new duck object every time the app is run.
+    // In my defense, I'm just playing around.
+    NSManagedObject *duck = [NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    [duck setValue:@"Duck" forKey:@"commonName"];
+    [self saveContext];
+    
     return YES;
 }
 
