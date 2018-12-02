@@ -16,10 +16,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    // This is kinda dumb. It adds a new duck object every time the app is run.
-    // In my defense, I'm just playing around.
+    // This is kinda dumb. In my defense, I'm just playing around.
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Animal"];
+    NSError *error;
+    NSArray *animals = [self.persistentContainer.viewContext executeFetchRequest:fetchRequest error:&error];
+    for (id animal in animals) {
+        [self.persistentContainer.viewContext deleteObject:animal];
+    }
+    
+    NSManagedObject *cow = [NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    [cow setValue:@"cow" forKey:@"commonName"];
+    
+    NSManagedObject *dog = [NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    [dog setValue:@"dog" forKey:@"commonName"];
+    
     NSManagedObject *duck = [NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
-    [duck setValue:@"Duck" forKey:@"commonName"];
+    [duck setValue:@"duck" forKey:@"commonName"];
+    
     [self saveContext];
     
     return YES;

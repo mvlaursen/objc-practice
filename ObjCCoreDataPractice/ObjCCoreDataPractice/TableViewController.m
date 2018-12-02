@@ -47,7 +47,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
-    cell.label.text = @"You're such an animal.";
+    NSError *error;
+    NSArray *animals = [self.viewContext executeFetchRequest:self.fetchRequest error:&error];
+    cell.label.text = [animals[indexPath.row] valueForKey:@"commonName"];
     return cell;
 }
 
