@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TableViewController.h"
+#import "TableViewCell.h"
 
 @interface TableViewController ()
 
@@ -44,15 +45,11 @@
     return count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
+    cell.label.text = @"You're such an animal.";
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
