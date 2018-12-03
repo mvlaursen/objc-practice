@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Animal+CoreDataProperties.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,32 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // This is dumb, but I'm just practicing using Core Data.
+
+    NSError *error;
+    NSArray *animals = [self.persistentContainer.viewContext executeFetchRequest:Animal.fetchRequest error:&error];
+    for (id animal in animals) {
+        [self.persistentContainer.viewContext deleteObject:animal];
+    }
+    
+    Animal *cat = (Animal *)[NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    cat.commonName = @"domestic cat";
+    cat.genus = @"Felus";
+    cat.species = @"catus";
+                   
+    Animal *dog = (Animal *)[NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    dog.commonName = @"domestic dog";
+    dog.genus = @"Canis";
+    dog.species = @"lupus";
+
+    Animal *horse = (Animal *)[NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:self.persistentContainer.viewContext];
+    horse.commonName = @"horse";
+    horse.genus = @"Equus";
+    horse.species = @"ferus caballus";
+
+    [self saveContext];
+
     return YES;
 }
 

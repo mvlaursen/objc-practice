@@ -14,6 +14,8 @@
 		3BB1962421B4A82B00B47E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BB1962321B4A82B00B47E81 /* Assets.xcassets */; };
 		3BB1962721B4A82B00B47E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB1962521B4A82B00B47E81 /* LaunchScreen.storyboard */; };
 		3BB1962A21B4A82B00B47E81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1962921B4A82B00B47E81 /* main.m */; };
+		3BB1963421B4A8FB00B47E81 /* Animal+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1963221B4A8FB00B47E81 /* Animal+CoreDataClass.m */; };
+		3BB1963521B4A8FB00B47E81 /* Animal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB1963321B4A8FB00B47E81 /* Animal+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,10 @@
 		3BB1962621B4A82B00B47E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BB1962821B4A82B00B47E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BB1962921B4A82B00B47E81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BB1963021B4A8FB00B47E81 /* Animal+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Animal+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3BB1963121B4A8FB00B47E81 /* Animal+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Animal+CoreDataClass.h"; sourceTree = "<group>"; };
+		3BB1963221B4A8FB00B47E81 /* Animal+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Animal+CoreDataClass.m"; sourceTree = "<group>"; };
+		3BB1963321B4A8FB00B47E81 /* Animal+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Animal+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,10 @@
 				3BB1962821B4A82B00B47E81 /* Info.plist */,
 				3BB1962921B4A82B00B47E81 /* main.m */,
 				3BB1962021B4A82A00B47E81 /* ObjCCoreDataPractice2.xcdatamodeld */,
+				3BB1963021B4A8FB00B47E81 /* Animal+CoreDataProperties.h */,
+				3BB1963121B4A8FB00B47E81 /* Animal+CoreDataClass.h */,
+				3BB1963221B4A8FB00B47E81 /* Animal+CoreDataClass.m */,
+				3BB1963321B4A8FB00B47E81 /* Animal+CoreDataProperties.m */,
 			);
 			path = ObjCCoreDataPractice2;
 			sourceTree = "<group>";
@@ -145,7 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB1962221B4A82A00B47E81 /* ObjCCoreDataPractice2.xcdatamodeld in Sources */,
+				3BB1963421B4A8FB00B47E81 /* Animal+CoreDataClass.m in Sources */,
 				3BB1961C21B4A82A00B47E81 /* ViewController.m in Sources */,
+				3BB1963521B4A8FB00B47E81 /* Animal+CoreDataProperties.m in Sources */,
 				3BB1962A21B4A82B00B47E81 /* main.m in Sources */,
 				3BB1961921B4A82A00B47E81 /* AppDelegate.m in Sources */,
 			);
