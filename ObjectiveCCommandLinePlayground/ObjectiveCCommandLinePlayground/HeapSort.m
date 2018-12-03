@@ -58,6 +58,9 @@
 - (NSArray *)sort: (NSArray *)input usingComparator:(NSComparator)comparator {
     BinaryNode *root = [BinaryNode makeTreeFromArray:input];
     [BinaryNode printTree:root];
+    [BinaryNode traverseTreeDepthFirst:root operation:^(id value) {
+        NSLog(@"%@", value);
+    }];
     
     [BinaryNode heapify:root];
     [BinaryNode printTree:root];

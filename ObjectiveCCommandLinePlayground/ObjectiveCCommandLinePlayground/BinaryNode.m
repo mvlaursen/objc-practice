@@ -69,8 +69,8 @@
     NSMutableArray *stack = [[NSMutableArray alloc] init];
     [BinaryNode traverseTreeDepthFirstAux:stack node:rootNode operation:operation];
     if (stack.count > 0) {
-        for (NSUInteger i = stack.count - 1; i >= 0; i--) {
-            operation(((BinaryNode *)stack[i]).value);
+        for (NSUInteger i = stack.count; i > 0; i--) {
+            operation(((BinaryNode *)stack[i - 1]).value);
         }
     }
 }
@@ -78,13 +78,11 @@
 + (void)traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation {
     if (node) {
         [stack addObject:node];
-        if (node.left) {
-            [BinaryNode traverseTreeDepthFirstAux:stack node:node.left operation:operation];
-            [stack addObject:node.left];
-        }
         if (node.right) {
             [BinaryNode traverseTreeDepthFirstAux:stack node:node.right operation:operation];
-            [stack addObject:node.right];
+        }
+        if (node.left) {
+            [BinaryNode traverseTreeDepthFirstAux:stack node:node.left operation:operation];
         }
     }
 }
