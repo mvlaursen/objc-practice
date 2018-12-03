@@ -66,9 +66,11 @@
 + (void) traverseTreeDepthFirst: (BinaryNode *)rootNode operation:(void (^)(id value)) operation {
     NSMutableArray *stack = [[NSMutableArray alloc] init];
     [BinaryNode traverseTreeDepthFirstAux:stack node:rootNode operation:operation];
-    for (BinaryNode *node in stack) {
-        operation(node.value);
-    };
+    if (stack.count > 0) {
+        for (NSUInteger i = stack.count - 1; i >= 0; i--) {
+            operation(((BinaryNode *)stack[i]).value);
+        }
+    }
 }
 
 + (void) traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation {
