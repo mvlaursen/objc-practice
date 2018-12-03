@@ -18,6 +18,11 @@
 
 + (BinaryNode *)makeTreeFromArray:(NSArray *)input;
 
+// Makes a tree if you feed it an array in which the tree has been traversed
+// depth-first left-right-parent order, with @0 for any nil children. Weird,
+// but it works for quickly construction a tree.
++ (BinaryNode *)makeTreeFromArray2:(NSArray *)input;
+
 + (void)traverseTreeBreadthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation;
 
 + (void)traverseTreeDepthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation;

@@ -65,6 +65,29 @@
     }
 }
 
++ (BinaryNode *)makeTreeFromArray2:(NSArray *)input {
+    NSMutableArray *stack = [NSMutableArray arrayWithCapacity:0];
+    
+    for (NSNumber *num in input) {
+        if (num.intValue == 0) {
+            [stack addObject:[[BinaryNode alloc] init:num left:nil right:nil]];
+        } else {
+            BinaryNode *right = [stack lastObject];
+            [stack removeLastObject];
+            if (((NSNumber *)right.value).intValue == 0)
+                right = nil;
+            BinaryNode *left = [stack lastObject];
+            [stack removeLastObject];
+            if (((NSNumber *)left.value).intValue == 0)
+                left = nil;
+            
+            BinaryNode *node = [[BinaryNode alloc] init:num left:left right:right];
+            [stack addObject:node];
+        }
+    }
+    return stack[0];
+}
+
 + (void)traverseTreeBreadthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation {
     NSMutableArray *queue = [[NSMutableArray alloc] init];
     [queue addObject:rootNode];

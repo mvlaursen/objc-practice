@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HeapSort.h"
+#import "BinaryNode.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -21,6 +22,10 @@ int main(int argc, const char * argv[]) {
         }];
         
         NSLog(@"%@", sorted);
+        
+        NSArray *fooFlat = @[@0, @0, @8, @0, @0, @9, @4, @0, @0, @5, @2, @0, @0, @6, @0, @0, @7, @3, @1];
+        BinaryNode *fooTree = [BinaryNode makeTreeFromArray2:fooFlat];
+        [BinaryNode printTree:fooTree];
     }
     
     return 0;
