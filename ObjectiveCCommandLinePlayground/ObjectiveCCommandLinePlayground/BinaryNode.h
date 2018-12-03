@@ -14,4 +14,10 @@
 
 - (instancetype)init: (id)value left:(BinaryNode *)left right:(BinaryNode *)right;
 
++ (void)heapify:(BinaryNode *)node;
+
++ (BinaryNode *)makeTreeFromArray:(NSArray *)input;
+
++ (NSArray *)mergeTree:(BinaryNode *)node;
+
 @end
