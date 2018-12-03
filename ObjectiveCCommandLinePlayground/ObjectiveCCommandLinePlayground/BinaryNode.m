@@ -57,33 +57,4 @@
     }
 }
 
-+ (NSArray *)mergeTree:(BinaryNode *)node {
-    NSMutableArray *merged = [[NSMutableArray alloc] init];
-    
-    if (node) {
-        NSArray *leftArray = [BinaryNode mergeTree:node.left];
-        uint leftIndex = 0;
-        NSArray *rightArray = [BinaryNode mergeTree:node.right];
-        uint rightIndex = 0;
-        
-        while (leftIndex < leftArray.count || rightIndex < rightArray.count) {
-            if (leftIndex < leftArray.count && rightIndex < rightArray.count) {
-                if (leftArray[leftIndex] <= rightArray[rightIndex]) {
-                    [merged addObject:leftArray[leftIndex++]];
-                } else {
-                    [merged addObject:rightArray[rightIndex++]];
-                }
-            } else if (leftIndex < leftArray.count) {
-                [merged addObject:leftArray[leftIndex++]];
-            } else if (rightIndex < rightArray.count) {
-                [merged addObject:rightArray[rightIndex++]];
-            }
-        }
-        
-        [merged addObject:node.value];
-    }
-    
-    return merged;
-}
-
 @end

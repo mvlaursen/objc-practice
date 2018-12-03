@@ -18,6 +18,4 @@
 
 + (BinaryNode *)makeTreeFromArray:(NSArray *)input;
 
-+ (NSArray *)mergeTree:(BinaryNode *)node;
-
 @end
