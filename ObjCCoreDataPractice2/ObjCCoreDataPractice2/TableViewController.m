@@ -6,9 +6,15 @@
 //  Copyright © 2018 Appamajigger. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import "Animal+CoreDataProperties.h"
 #import "TableViewController.h"
+#import "TableViewCell.h"
 
 @interface TableViewController ()
+
+@property (readonly, strong) NSArray *animals;
+@property (readonly, weak) NSManagedObjectContext *viewContext;
 
 @end
 
@@ -22,6 +28,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    AppDelegate *delegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    _viewContext = delegate.persistentContainer.viewContext;
 }
 
 #pragma mark - Table view data source
@@ -31,19 +40,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.animals.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AnimalCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"AnimalCell" forIndexPath:indexPath];
+    cell.label.text = ((Animal *)self.animals[indexPath.row]).commonName;
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -88,5 +92,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Data
+
+@synthesize animals=_animals;
+
+- (NSArray *)animals {
+    if (!_animals) {
+        NSError *error;
+        _animals = [self.viewContext executeFetchRequest:Animal.fetchRequest error:&error];
+    }
+
+    return _animals;
+}
 
 @end
