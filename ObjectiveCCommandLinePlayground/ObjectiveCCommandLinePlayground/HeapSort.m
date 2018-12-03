@@ -59,7 +59,10 @@
     BinaryNode *root = [BinaryNode makeTreeFromArray:input];
     [BinaryNode printTree:root];
     [BinaryNode traverseTreeDepthFirst:root operation:^(id value) {
-        NSLog(@"%@", value);
+        NSLog(@"--D.F.--> %@", value);
+    }];
+    [BinaryNode traverseTreeBreadthFirst:root operation:^(id value) {
+        NSLog(@"~~B.F.~~> %@", value);
     }];
     
     [BinaryNode heapify:root];

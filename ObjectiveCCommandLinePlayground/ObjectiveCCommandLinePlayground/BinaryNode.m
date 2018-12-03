@@ -11,7 +11,7 @@
 
 @interface BinaryNode ()
 
-+ (void)traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation;
++ (void)traverseTreeDepthFirstAux:(NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation;
 
 + (void)printTreeAux:(NSMutableString *)output depth:(NSUInteger)depth node:(BinaryNode *)node;
 
@@ -62,6 +62,23 @@
         return node;
     } else {
         return nil;
+    }
+}
+
++ (void)traverseTreeBreadthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation {
+    NSMutableArray *queue = [[NSMutableArray alloc] init];
+    [queue addObject:rootNode];
+    
+    while (queue.count > 0) {
+        BinaryNode *node = (BinaryNode *)queue[0];
+        [queue removeObjectAtIndex:0];
+        operation(node.value);
+        if (node.left) {
+            [queue addObject:node.left];
+        }
+        if (node.right) {
+            [queue addObject:node.right];
+        }
     }
 }
 

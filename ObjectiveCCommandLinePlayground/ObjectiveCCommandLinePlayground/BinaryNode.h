@@ -18,8 +18,10 @@
 
 + (BinaryNode *)makeTreeFromArray:(NSArray *)input;
 
-+ (void)traverseTreeDepthFirst: (BinaryNode *)rootNode operation:(void (^)(id value)) operation;
++ (void)traverseTreeBreadthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation;
 
-+ (void)printTree: (BinaryNode *)rootNode;
++ (void)traverseTreeDepthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation;
+
++ (void)printTree:(BinaryNode *)rootNode;
 
 @end
