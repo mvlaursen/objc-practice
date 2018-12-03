@@ -57,7 +57,11 @@
 
 - (NSArray *)sort: (NSArray *)input usingComparator:(NSComparator)comparator {
     BinaryNode *root = [BinaryNode makeTreeFromArray:input];
+    [BinaryNode printTree:root];
+    
     [BinaryNode heapify:root];
+    [BinaryNode printTree:root];
+
     NSArray *sorted = [BinaryNode mergeTree:root];
     return sorted;
 }

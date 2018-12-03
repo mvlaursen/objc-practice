@@ -13,6 +13,8 @@
 
 + (void)traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation;
 
++ (void)printTreeAux:(NSMutableString *)output depth:(NSUInteger)depth node:(BinaryNode *)node;
+
 @end
 
 @implementation BinaryNode
@@ -63,7 +65,7 @@
     }
 }
 
-+ (void) traverseTreeDepthFirst: (BinaryNode *)rootNode operation:(void (^)(id value)) operation {
++ (void)traverseTreeDepthFirst: (BinaryNode *)rootNode operation:(void (^)(id value)) operation {
     NSMutableArray *stack = [[NSMutableArray alloc] init];
     [BinaryNode traverseTreeDepthFirstAux:stack node:rootNode operation:operation];
     if (stack.count > 0) {
@@ -73,7 +75,7 @@
     }
 }
 
-+ (void) traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation {
++ (void)traverseTreeDepthFirstAux: (NSMutableArray *)stack node:(BinaryNode *)node operation:(void (^)(id value)) operation {
     if (node) {
         [stack addObject:node];
         if (node.left) {
@@ -85,6 +87,31 @@
             [stack addObject:node.right];
         }
     }
+}
+
++ (void)printTreeAux:(NSMutableString *)output depth:(NSUInteger)depth node:(BinaryNode *)node {
+    if (node) {
+        NSMutableString *line = [NSMutableString stringWithString:@"=="];
+        for (int i = 0; i < depth; i++)
+            [line appendString:@"=="];
+        [line appendFormat:@"> %@\n", node.value];
+        [output appendString:line];
+        
+        if (node.left) {
+            [BinaryNode printTreeAux:output depth:depth + 1 node:node.left];
+        }
+        if (node.right) {
+            [BinaryNode printTreeAux:output depth:depth + 1 node:node.right];
+        }
+    }
+}
+
++ (void)printTree: (BinaryNode *)rootNode {
+    NSMutableString *output = [[NSMutableString alloc] init];
+    [output appendString:@"\n"];
+    NSUInteger depth = 0;
+    [BinaryNode printTreeAux:output depth:depth node:rootNode];
+    NSLog(@"%@", output);
 }
 
 @end
