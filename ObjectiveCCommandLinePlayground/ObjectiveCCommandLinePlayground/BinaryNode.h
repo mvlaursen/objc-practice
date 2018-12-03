@@ -16,11 +16,15 @@
 
 + (void)heapify:(BinaryNode *)node;
 
+
+// Given an array with a bunch of int values, will make a binary tree out of
+// it. No particular tree ordering guaranteed.
 + (BinaryNode *)makeTreeFromArray:(NSArray *)input;
 
 // Makes a tree if you feed it an array in which the tree has been traversed
 // depth-first left-right-parent order, with @0 for any nil children. Weird,
-// but it works for quickly construction a tree.
+// but it works for quickly construction a tree. Cannot use 0 as the value of
+// any of the nodes.
 + (BinaryNode *)makeTreeFromArray2:(NSArray *)input;
 
 + (void)traverseTreeBreadthFirst:(BinaryNode *)rootNode operation:(void (^)(id value)) operation;
