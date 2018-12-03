@@ -152,4 +152,25 @@
     NSLog(@"%@", output);
 }
 
++ (BinaryNode *)balanceTree:(BinaryNode *)root {
+    BinaryNode *newRoot = root;
+    
+    if (newRoot) {
+        if (newRoot.left && !newRoot.right) {
+            newRoot = root.left;
+            root.left = root.left.right;
+            newRoot.right = root;
+        } else if (newRoot.right && !newRoot.left) {
+            newRoot = root.right;
+            root.right = root.right.left;
+            newRoot.left = root;
+        }
+        
+        newRoot.left = [BinaryNode balanceTree:newRoot.left];
+        newRoot.right = [BinaryNode balanceTree:newRoot.right];
+    }
+    
+    return newRoot;
+}
+
 @end

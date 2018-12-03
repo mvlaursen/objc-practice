@@ -33,4 +33,6 @@
 
 + (void)printTree:(BinaryNode *)rootNode;
 
++ (BinaryNode *)balanceTree:(BinaryNode *)root;
+
 @end
