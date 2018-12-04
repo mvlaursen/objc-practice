@@ -15,6 +15,8 @@
 
 + (void)printTreeAux:(NSMutableString *)output depth:(NSUInteger)depth node:(BinaryNode *)node;
 
++ (BinaryNode *)balanceTreeAux:(NSArray *)input;
+
 @end
 
 @implementation BinaryNode
@@ -152,25 +154,26 @@
     NSLog(@"%@", output);
 }
 
-+ (BinaryNode *)balanceTree:(BinaryNode *)root {
-    BinaryNode *newRoot = root;
-    
-    if (newRoot) {
-        if (newRoot.left && !newRoot.right) {
-            newRoot = root.left;
-            root.left = root.left.right;
-            newRoot.right = root;
-        } else if (newRoot.right && !newRoot.left) {
-            newRoot = root.right;
-            root.right = root.right.left;
-            newRoot.left = root;
-        }
-        
-        newRoot.left = [BinaryNode balanceTree:newRoot.left];
-        newRoot.right = [BinaryNode balanceTree:newRoot.right];
++ (BinaryNode *)balanceTreeAux:(NSArray *)input {
+    if (input.count) {
+        unsigned long pivot = input.count / 2;
+        BinaryNode *left = [BinaryNode balanceTreeAux:[input subarrayWithRange:NSMakeRange(0, pivot)]];
+        BinaryNode *right = [BinaryNode balanceTreeAux:[input subarrayWithRange:NSMakeRange(pivot + 1, input.count - pivot - 1)]];
+        return [[BinaryNode alloc] init:input[pivot] left:left right:right];
+    } else {
+        return nil;
     }
+}
+
++ (BinaryNode *)balanceTree:(BinaryNode *)root {
+    NSMutableArray *flattenedTree = [NSMutableArray arrayWithCapacity:0];
+    [BinaryNode traverseTreeDepthFirst:root operation:^(id value) {
+        [flattenedTree addObject:value];
+    }];
+    NSLog(@"Mashed that sucker flat: %@", flattenedTree);
     
-    return newRoot;
+    BinaryNode *balancedTree = [BinaryNode balanceTreeAux:flattenedTree];
+    return balancedTree;
 }
 
 @end
