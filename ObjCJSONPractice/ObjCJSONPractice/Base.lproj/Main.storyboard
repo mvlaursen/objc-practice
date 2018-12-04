@@ -30,7 +30,21 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QtT-JB-ddU">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QtT-JB-ddU" secondAttribute="bottom" id="AAJ-Xh-01n"/>
+                                    <constraint firstItem="QtT-JB-ddU" firstAttribute="top" secondItem="OdU-xx-96A" secondAttribute="top" id="FLS-Vc-OkP"/>
+                                    <constraint firstAttribute="trailing" secondItem="QtT-JB-ddU" secondAttribute="trailing" id="Nka-JU-dZC"/>
+                                    <constraint firstItem="QtT-JB-ddU" firstAttribute="leading" secondItem="OdU-xx-96A" secondAttribute="leading" id="cQK-v8-n2A"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="QtT-JB-ddU" id="mlq-Wr-Cq5"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -41,7 +55,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGe-I3-ZiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-155" y="-57"/>
+            <point key="canvasLocation" x="-155.625" y="-57.5"/>
         </scene>
     </scenes>
 </document>
