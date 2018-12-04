@@ -7,8 +7,11 @@
 //
 
 #import "CollectionViewController.h"
+#import "CollectionViewCell.h"
 
 @interface CollectionViewController ()
+
+@property (nonatomic, strong) NSArray *photos;
 
 @end
 
@@ -23,7 +26,7 @@ static NSString * const reuseIdentifier = @"MyCell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
 }
@@ -46,15 +49,18 @@ static NSString * const reuseIdentifier = @"MyCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return self.photos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    
+    NSDictionary *photoDict = (NSDictionary *)self.photos[indexPath.row];
+    NSString *thumbnailPath = [photoDict valueForKey:@"thumbnailUrl"];
+    NSURL *thumbnailUrl = [NSURL URLWithString:thumbnailPath];
+    NSData *thumbnailData = [NSData dataWithContentsOfURL:thumbnailUrl];
+    UIImage *image = [UIImage imageWithData:thumbnailData];
+    cell.imageView.image = image;
     return cell;
 }
 
@@ -88,5 +94,28 @@ static NSString * const reuseIdentifier = @"MyCell";
 	
 }
 */
+
+#pragma mark - Data
+
+@synthesize photos = _photos;
+
+- (NSArray *) photos {
+    if (!_photos) {
+        NSURL *url = [NSURL URLWithString:@"https://jsonplaceholder.typicode.com/photos"];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            // TODO: Check error and HTTP status.
+            
+            NSError *jsonParsingError;
+            self.photos = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }];
+        [task resume];
+    }
+
+    return _photos;
+}
 
 @end
