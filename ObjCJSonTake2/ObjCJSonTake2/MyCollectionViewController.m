@@ -7,14 +7,18 @@
 //
 
 #import "MyCollectionViewController.h"
+#import "MyCollectionViewCell.h"
 
 @interface MyCollectionViewController ()
+
+@property (nonatomic, strong) NSArray *photos;
 
 @end
 
 @implementation MyCollectionViewController
 
 static NSString * const reuseIdentifier = @"MyCell";
+static NSString * const kThumbnailImageKey = @"thumbnailImage";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,13 +50,22 @@ static NSString * const reuseIdentifier = @"MyCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    NSInteger count = self.photos.count;
+    return count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    MyCollectionViewCell *cell = (MyCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    NSDictionary *photoDict = (NSDictionary *)self.photos[indexPath.row];
+    UIImage *thumbnailImage = [photoDict valueForKey:kThumbnailImageKey];
+    
+    if (thumbnailImage) {
+        cell.imageView.image = thumbnailImage;
+    } else {
+        UIImage *placeholder = [UIImage imageNamed:@"placeholder"];
+        cell.imageView.image = placeholder;
+    }
     
     return cell;
 }
@@ -87,5 +100,11 @@ static NSString * const reuseIdentifier = @"MyCell";
 	
 }
 */
+
+#pragma mark - Data
+
+- (NSArray *)photos {
+    return nil;
+}
 
 @end
