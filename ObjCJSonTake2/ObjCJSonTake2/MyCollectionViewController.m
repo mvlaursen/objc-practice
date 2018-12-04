@@ -11,6 +11,12 @@
 
 @interface MyCollectionViewController ()
 
+/*
+ * Each array member is a dictionary containing the parsed JSON data for a
+ * photo, plus a kThumbnailImageKey entry whose value is either the thumbnail
+ * UIImage or a placeholder thumbnail UIImage, if the thumbnail has not
+ * finished loading.
+ */
 @property (nonatomic, strong) NSArray *photos;
 
 @end
@@ -18,7 +24,9 @@
 @implementation MyCollectionViewController
 
 static NSString * const reuseIdentifier = @"MyCell";
+static NSString * const kPhotosJSONURL = @"https://jsonplaceholder.typicode.com/photos";
 static NSString * const kThumbnailImageKey = @"thumbnailImage";
+static NSUInteger const kMaxPhotos = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,17 +64,9 @@ static NSString * const kThumbnailImageKey = @"thumbnailImage";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MyCollectionViewCell *cell = (MyCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
     NSDictionary *photoDict = (NSDictionary *)self.photos[indexPath.row];
     UIImage *thumbnailImage = [photoDict valueForKey:kThumbnailImageKey];
-    
-    if (thumbnailImage) {
-        cell.imageView.image = thumbnailImage;
-    } else {
-        UIImage *placeholder = [UIImage imageNamed:@"placeholder"];
-        cell.imageView.image = placeholder;
-    }
-    
+    cell.imageView.image = thumbnailImage;
     return cell;
 }
 
@@ -104,7 +104,31 @@ static NSString * const kThumbnailImageKey = @"thumbnailImage";
 #pragma mark - Data
 
 - (NSArray *)photos {
-    return nil;
+    if (!_photos) {
+        NSURL *url = [NSURL URLWithString:kPhotosJSONURL];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            // TODO: Check error and HTTP status.
+            
+            NSError *jsonParsingError;
+            self.photos = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonParsingError];
+            // The sample data has 5000 photos. Cut it down to a more
+            // reasonable size.
+            self.photos = [self.photos subarrayWithRange:NSMakeRange(0, kMaxPhotos)];
+            UIImage *placeholder = [UIImage imageNamed:@"placeholder"];
+            for (NSMutableDictionary *photoDict in self.photos) {
+                [photoDict setValue:placeholder forKey:kThumbnailImageKey];
+            }
+            
+            // TODO: Start downloads of all the actual thumbnails.
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }];
+        [task resume];
+    }
+    
+    return _photos;
 }
 
 @end
