@@ -22,6 +22,8 @@ static NSString * const reuseIdentifier = @"MyCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.collectionView.delegate = self;
+    
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -49,19 +51,21 @@ static NSString * const reuseIdentifier = @"MyCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSInteger count = MIN(10, self.photos.count);
-    return count;
+//    NSInteger count = MIN(10, self.photos.count);
+//    return count;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSDictionary *photoDict = (NSDictionary *)self.photos[indexPath.row];
-    NSString *thumbnailPath = [photoDict valueForKey:@"thumbnailUrl"];
-    NSURL *thumbnailUrl = [NSURL URLWithString:thumbnailPath];
-    NSData *thumbnailData = [NSData dataWithContentsOfURL:thumbnailUrl];
-    UIImage *image = [UIImage imageWithData:thumbnailData];
-    cell.imageView.image = image;
+//    NSDictionary *photoDict = (NSDictionary *)self.photos[indexPath.row];
+//    NSString *thumbnailPath = [photoDict valueForKey:@"thumbnailUrl"];
+//    NSURL *thumbnailUrl = [NSURL URLWithString:thumbnailPath];
+//    NSData *thumbnailData = [NSData dataWithContentsOfURL:thumbnailUrl];
+//    UIImage *image = [UIImage imageWithData:thumbnailData];
+//    cell.imageView.image = image;
+    
     return cell;
 }
 
