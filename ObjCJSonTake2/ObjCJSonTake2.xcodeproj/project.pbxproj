@@ -8,24 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		3BC5BFDD21B7338E00F92122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFDC21B7338E00F92122 /* AppDelegate.m */; };
-		3BC5BFE021B7338E00F92122 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFDF21B7338E00F92122 /* ViewController.m */; };
 		3BC5BFE321B7338E00F92122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BFE121B7338E00F92122 /* Main.storyboard */; };
 		3BC5BFE521B7338F00F92122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BFE421B7338F00F92122 /* Assets.xcassets */; };
 		3BC5BFE821B7338F00F92122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BFE621B7338F00F92122 /* LaunchScreen.storyboard */; };
 		3BC5BFEB21B7338F00F92122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFEA21B7338F00F92122 /* main.m */; };
+		3BC5BFF321B7343600F92122 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFF221B7343600F92122 /* MyCollectionViewController.m */; };
+		3BC5BFF621B734FD00F92122 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3BC5BFD821B7338E00F92122 /* ObjCJSonTake2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCJSonTake2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC5BFDB21B7338E00F92122 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BC5BFDC21B7338E00F92122 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3BC5BFDE21B7338E00F92122 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3BC5BFDF21B7338E00F92122 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3BC5BFE221B7338E00F92122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BC5BFE421B7338F00F92122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BC5BFE721B7338F00F92122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC5BFE921B7338F00F92122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC5BFEA21B7338F00F92122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BC5BFF121B7343600F92122 /* MyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
+		3BC5BFF221B7343600F92122 /* MyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
+		3BC5BFF421B734FD00F92122 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
+		3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +63,10 @@
 			children = (
 				3BC5BFDB21B7338E00F92122 /* AppDelegate.h */,
 				3BC5BFDC21B7338E00F92122 /* AppDelegate.m */,
-				3BC5BFDE21B7338E00F92122 /* ViewController.h */,
-				3BC5BFDF21B7338E00F92122 /* ViewController.m */,
+				3BC5BFF121B7343600F92122 /* MyCollectionViewController.h */,
+				3BC5BFF221B7343600F92122 /* MyCollectionViewController.m */,
+				3BC5BFF421B734FD00F92122 /* MyCollectionViewCell.h */,
+				3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */,
 				3BC5BFE121B7338E00F92122 /* Main.storyboard */,
 				3BC5BFE421B7338F00F92122 /* Assets.xcassets */,
 				3BC5BFE621B7338F00F92122 /* LaunchScreen.storyboard */,
@@ -141,9 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC5BFE021B7338E00F92122 /* ViewController.m in Sources */,
 				3BC5BFEB21B7338F00F92122 /* main.m in Sources */,
 				3BC5BFDD21B7338E00F92122 /* AppDelegate.m in Sources */,
+				3BC5BFF621B734FD00F92122 /* MyCollectionViewCell.m in Sources */,
+				3BC5BFF321B7343600F92122 /* MyCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
