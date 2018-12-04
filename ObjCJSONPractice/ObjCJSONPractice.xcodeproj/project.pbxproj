@@ -8,26 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		3BC5BF6B21B6EE0A00F92122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF6A21B6EE0A00F92122 /* AppDelegate.m */; };
-		3BC5BF6E21B6EE0A00F92122 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF6D21B6EE0A00F92122 /* ViewController.m */; };
 		3BC5BF7121B6EE0A00F92122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BF6F21B6EE0A00F92122 /* Main.storyboard */; };
 		3BC5BF7421B6EE0A00F92122 /* ObjCJSONPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF7221B6EE0A00F92122 /* ObjCJSONPractice.xcdatamodeld */; };
 		3BC5BF7621B6EE0B00F92122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BF7521B6EE0B00F92122 /* Assets.xcassets */; };
-		3BC5BF7921B6EE0B00F92122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BF7721B6EE0B00F92122 /* LaunchScreen.storyboard */; };
 		3BC5BF7C21B6EE0B00F92122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF7B21B6EE0B00F92122 /* main.m */; };
+		3BC5BF8421B6EF2900F92122 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF8321B6EF2900F92122 /* CollectionViewController.m */; };
+		3BC5BF8721B6EF5400F92122 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BF8621B6EF5400F92122 /* CollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3BC5BF6621B6EE0A00F92122 /* ObjCJSONPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCJSONPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC5BF6921B6EE0A00F92122 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3BC5BF6A21B6EE0A00F92122 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3BC5BF6C21B6EE0A00F92122 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3BC5BF6D21B6EE0A00F92122 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3BC5BF7021B6EE0A00F92122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BC5BF7321B6EE0A00F92122 /* ObjCJSONPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ObjCJSONPractice.xcdatamodel; sourceTree = "<group>"; };
 		3BC5BF7521B6EE0B00F92122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3BC5BF7821B6EE0B00F92122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC5BF7A21B6EE0B00F92122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC5BF7B21B6EE0B00F92122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BC5BF8221B6EF2900F92122 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		3BC5BF8321B6EF2900F92122 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		3BC5BF8521B6EF5400F92122 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		3BC5BF8621B6EF5400F92122 /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +63,12 @@
 			children = (
 				3BC5BF6921B6EE0A00F92122 /* AppDelegate.h */,
 				3BC5BF6A21B6EE0A00F92122 /* AppDelegate.m */,
-				3BC5BF6C21B6EE0A00F92122 /* ViewController.h */,
-				3BC5BF6D21B6EE0A00F92122 /* ViewController.m */,
+				3BC5BF8221B6EF2900F92122 /* CollectionViewController.h */,
+				3BC5BF8321B6EF2900F92122 /* CollectionViewController.m */,
+				3BC5BF8521B6EF5400F92122 /* CollectionViewCell.h */,
+				3BC5BF8621B6EF5400F92122 /* CollectionViewCell.m */,
 				3BC5BF6F21B6EE0A00F92122 /* Main.storyboard */,
 				3BC5BF7521B6EE0B00F92122 /* Assets.xcassets */,
-				3BC5BF7721B6EE0B00F92122 /* LaunchScreen.storyboard */,
 				3BC5BF7A21B6EE0B00F92122 /* Info.plist */,
 				3BC5BF7B21B6EE0B00F92122 /* main.m */,
 				3BC5BF7221B6EE0A00F92122 /* ObjCJSONPractice.xcdatamodeld */,
@@ -131,7 +133,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC5BF7921B6EE0B00F92122 /* LaunchScreen.storyboard in Resources */,
 				3BC5BF7621B6EE0B00F92122 /* Assets.xcassets in Resources */,
 				3BC5BF7121B6EE0A00F92122 /* Main.storyboard in Resources */,
 			);
@@ -144,7 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC5BF6E21B6EE0A00F92122 /* ViewController.m in Sources */,
+				3BC5BF8421B6EF2900F92122 /* CollectionViewController.m in Sources */,
+				3BC5BF8721B6EF5400F92122 /* CollectionViewCell.m in Sources */,
 				3BC5BF6B21B6EE0A00F92122 /* AppDelegate.m in Sources */,
 				3BC5BF7C21B6EE0B00F92122 /* main.m in Sources */,
 				3BC5BF7421B6EE0A00F92122 /* ObjCJSONPractice.xcdatamodeld in Sources */,
@@ -160,14 +162,6 @@
 				3BC5BF7021B6EE0A00F92122 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3BC5BF7721B6EE0B00F92122 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BC5BF7821B6EE0B00F92122 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
