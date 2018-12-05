@@ -102,6 +102,11 @@ static NSUInteger const kMaxPhotos = 10;
 }
 */
 
+/*
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+}
+*/
+
 #pragma mark - Data
 
 - (NSArray *)photos {
