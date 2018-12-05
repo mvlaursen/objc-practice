@@ -26,6 +26,7 @@
 static NSString * const reuseIdentifier = @"MyCell";
 static NSString * const kPhotosJSONURL = @"https://jsonplaceholder.typicode.com/photos";
 static NSString * const kThumbnailImageKey = @"thumbnailImage";
+static NSString * const kThumbnailURL = @"thumbnailUrl";
 static NSUInteger const kMaxPhotos = 10;
 
 - (void)viewDidLoad {
@@ -105,8 +106,8 @@ static NSUInteger const kMaxPhotos = 10;
 
 - (NSArray *)photos {
     if (!_photos) {
-        NSURL *url = [NSURL URLWithString:kPhotosJSONURL];
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURL *photoJSONURL = [NSURL URLWithString:kPhotosJSONURL];
+        NSURLSessionDataTask *photoJSONTask = [[NSURLSession sharedSession] dataTaskWithURL:photoJSONURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             // TODO: Check error and HTTP status.
             
             NSError *jsonParsingError;
@@ -117,15 +118,24 @@ static NSUInteger const kMaxPhotos = 10;
             UIImage *placeholder = [UIImage imageNamed:@"placeholder"];
             for (NSMutableDictionary *photoDict in self.photos) {
                 [photoDict setValue:placeholder forKey:kThumbnailImageKey];
+                
+                NSString *thumbnailPath = [photoDict valueForKey:kThumbnailURL];
+                NSURL *thumbnailURL = [NSURL URLWithString:thumbnailPath];
+                NSURLSessionTask *thumbnailDownloadTask = [[NSURLSession sharedSession] dataTaskWithURL:thumbnailURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    UIImage *thumbnailImage = [UIImage imageWithData:data];
+                    [photoDict setValue:thumbnailImage forKey:kThumbnailImageKey];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.collectionView reloadData];
+                    }); // TODO: Overkill!
+                }];
+                [thumbnailDownloadTask resume];
             }
-            
-            // TODO: Start downloads of all the actual thumbnails.
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.collectionView reloadData];
             });
         }];
-        [task resume];
+        [photoJSONTask resume];
     }
     
     return _photos;
