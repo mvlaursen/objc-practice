@@ -127,12 +127,15 @@ static NSUInteger const kMaxPhotos = 10;
                     UIImage *thumbnailImage = [UIImage imageWithData:data];
                     [photoDict setValue:thumbnailImage forKey:kThumbnailImageKey];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.collectionView reloadData];
-                    }); // TODO: Overkill!
+                        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:0];
+                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:iPhoto inSection:0];
+                        [indexPaths addObject:indexPath];
+                        [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+                    });
                 }];
                 [thumbnailDownloadTask resume];
             }
-                        
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.collectionView reloadData];
             });
