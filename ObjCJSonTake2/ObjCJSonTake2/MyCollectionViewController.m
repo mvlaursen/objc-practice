@@ -116,11 +116,13 @@ static NSUInteger const kMaxPhotos = 10;
             // reasonable size.
             self.photos = [self.photos subarrayWithRange:NSMakeRange(0, kMaxPhotos)];
             UIImage *placeholder = [UIImage imageNamed:@"placeholder"];
-            for (NSMutableDictionary *photoDict in self.photos) {
+            
+            for (NSUInteger iPhoto = 0; iPhoto < self.photos.count; iPhoto++) {
+                NSMutableDictionary *photoDict = (NSMutableDictionary *)self.photos[iPhoto];
                 [photoDict setValue:placeholder forKey:kThumbnailImageKey];
-                
                 NSString *thumbnailPath = [photoDict valueForKey:kThumbnailURL];
                 NSURL *thumbnailURL = [NSURL URLWithString:thumbnailPath];
+                
                 NSURLSessionTask *thumbnailDownloadTask = [[NSURLSession sharedSession] dataTaskWithURL:thumbnailURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                     UIImage *thumbnailImage = [UIImage imageWithData:data];
                     [photoDict setValue:thumbnailImage forKey:kThumbnailImageKey];
@@ -130,7 +132,7 @@ static NSUInteger const kMaxPhotos = 10;
                 }];
                 [thumbnailDownloadTask resume];
             }
-            
+                        
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.collectionView reloadData];
             });
