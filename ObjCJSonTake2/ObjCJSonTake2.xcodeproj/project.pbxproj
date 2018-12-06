@@ -15,6 +15,7 @@
 		3BC5BFF321B7343600F92122 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFF221B7343600F92122 /* MyCollectionViewController.m */; };
 		3BC5BFF621B734FD00F92122 /* MyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */; };
 		3BC5BFF821B73A2A00F92122 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC5BFF721B73A2A00F92122 /* placeholder.png */; };
+		3BC5BFFC21B753ED00F92122 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC5BFFB21B753ED00F92122 /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		3BC5BFF421B734FD00F92122 /* MyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewCell.h; sourceTree = "<group>"; };
 		3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewCell.m; sourceTree = "<group>"; };
 		3BC5BFF721B73A2A00F92122 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		3BC5BFFA21B753ED00F92122 /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		3BC5BFFB21B753ED00F92122 /* PhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 				3BC5BFF221B7343600F92122 /* MyCollectionViewController.m */,
 				3BC5BFF421B734FD00F92122 /* MyCollectionViewCell.h */,
 				3BC5BFF521B734FD00F92122 /* MyCollectionViewCell.m */,
+				3BC5BFFA21B753ED00F92122 /* PhotoViewController.h */,
+				3BC5BFFB21B753ED00F92122 /* PhotoViewController.m */,
 				3BC5BFE121B7338E00F92122 /* Main.storyboard */,
 				3BC5BFE421B7338F00F92122 /* Assets.xcassets */,
 				3BC5BFF921B73A3F00F92122 /* assets */,
@@ -162,6 +167,7 @@
 				3BC5BFDD21B7338E00F92122 /* AppDelegate.m in Sources */,
 				3BC5BFF621B734FD00F92122 /* MyCollectionViewCell.m in Sources */,
 				3BC5BFF321B7343600F92122 /* MyCollectionViewController.m in Sources */,
+				3BC5BFFC21B753ED00F92122 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

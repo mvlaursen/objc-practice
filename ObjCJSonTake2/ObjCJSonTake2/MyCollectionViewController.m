@@ -8,6 +8,7 @@
 
 #import "MyCollectionViewController.h"
 #import "MyCollectionViewCell.h"
+#import "PhotoViewController.h"
 
 @interface MyCollectionViewController ()
 
@@ -41,15 +42,14 @@ static NSUInteger const kMaxPhotos = 10;
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    PhotoViewController *dvc = [segue destinationViewController];
+    dvc.photoTitle.text = @"This isn't really the photo's title.";
 }
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
