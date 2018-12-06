@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhotoViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *photoDict;
+
 @property (weak, nonatomic) IBOutlet UILabel *photoTitle;
 
 @end

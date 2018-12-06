@@ -47,8 +47,10 @@ static NSUInteger const kMaxPhotos = 10;
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Pass the selected object to the new view controller.
-    PhotoViewController *dvc = [segue destinationViewController];
-    dvc.photoTitle.text = @"This isn't really the photo's title.";
+    PhotoViewController *dvc = (PhotoViewController *)[segue destinationViewController];
+    MyCollectionViewCell *cell = (MyCollectionViewCell *)sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    dvc.photoDict = (NSDictionary *)self.photos[indexPath.row];
 }
 
 #pragma mark <UICollectionViewDataSource>
